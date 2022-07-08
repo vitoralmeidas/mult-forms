@@ -9,6 +9,8 @@ export const FinalStep = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useForm();
 
+  console.log(state)
+
   useEffect(() => {
     if (state.name === "") {
       navigate("/");

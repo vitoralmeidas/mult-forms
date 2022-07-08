@@ -3,6 +3,8 @@ const app = express();
 const connectDB = require("./DB/connect");
 const usersRouter = require("./routes/users");
 require("dotenv").config();
+// async errors handler
+require("express-async-error");
 
 app.get("/", (req, res) => {
   res.send("<h1>MULTI-FORM-API</h1>");
