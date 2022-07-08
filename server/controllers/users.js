@@ -5,4 +5,8 @@ const getAllUsers = async (req, res) => {
   res.status(200).json({ user, nbHits: user.length });
 };
 
-module.exports = { getAllUsers };
+const createNewUser = async (req, res) => {
+  res.status(201).json(req.body);
+};
+
+module.exports = { getAllUsers, createNewUser };

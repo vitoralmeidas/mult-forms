@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 import { useForm, FormActions } from "../../contexts/FormContext";
 import { Theme } from "../../components/Theme";
@@ -22,7 +23,9 @@ export const FinalStep = () => {
     }
   }, []);
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
+    const {name, email, github, level} = state;
+    await axios.post("http://localhost:5000", {name, email, github, level});
     dispatch({
       type: FormActions.cleanAll,
       payload: "",
