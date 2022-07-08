@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const connectDB = require("./DB/connect");
 const usersRouter = require("./routes/users");
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 //middlewares
 // deal with posts and put requests
 app.use(express.json());
+app.use(cors());
 
 //routes
 app.use("/api/v1/users", usersRouter);

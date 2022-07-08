@@ -6,7 +6,9 @@ const getAllUsers = async (req, res) => {
 };
 
 const createNewUser = async (req, res) => {
-  res.status(201).json(req.body);
+  const user = await User.create(req.body);
+  res.status(201).json({ user });
+  console.log("POST", req.body);
 };
 
 module.exports = { getAllUsers, createNewUser };
