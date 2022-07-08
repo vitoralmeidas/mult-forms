@@ -1,11 +1,19 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./DB/connect");
+const usersRouter = require("./routes/users");
 require("dotenv").config();
 
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
+app.get("/", (req, res) => {
+  res.send("<h1>MULTI-FORM-API</h1>");
 });
+
+//middlewares
+// deal with posts and put requests
+app.use(express.json());
+
+//routes
+app.use("/api/v1/users", usersRouter);
 
 const port = process.env.PORT || 5000;
 
