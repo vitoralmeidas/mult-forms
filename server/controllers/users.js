@@ -1,5 +1,8 @@
+const User = require("../models/users");
+
 const getAllUsers = async (req, res) => {
-  res.send("Hi there");
+  const user = await User.find({});
+  res.status(200).json({ user, nbHits: user.length });
 };
 
 module.exports = { getAllUsers };
