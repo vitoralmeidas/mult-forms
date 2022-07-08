@@ -1,33 +1,33 @@
 [
     {
       "name": "Thais Gomes Luz",
-      "level": true,
+      "level": 1,
       "email": "thais@thais.com.br",
       "github": "www.github.com/thais"
     },
     {
       "name": "Vitor de Almeida Oliveira",
-      "level": false,
+      "level": 0,
       "email": "vitor@vitor.com.br",
       "github": "www.github.com/vitor"
     },
     {
       "name": "João Pedro de Almeida",
-      "level": true,
+      "level": 1,
       "email": "joao@joao.com.br",
-        "github": "www.github.com/joao"
+      "github": "www.github.com/joao"
     } ,
     {
       "name": "Pedro Sandre",
-      "level": false,
+      "level": 0,
       "email": "pedro@pedro.com.br",
-        "github": "www.github.com/pedro"
+      "github": "www.github.com/pedro"
     },
     {
       "name": "Jaelson Jhow",
-      "level": true,
+      "level": 1,
       "email": "jaelson@jaelson.com.br",
-        "github": "www.github.com/jaelson"
+       "github": "www.github.com/jaelson"
     } 
 ]
   
