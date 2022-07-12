@@ -18,7 +18,6 @@ export const SelectedOption = ({
   return (
     <C.Container onClick={onClick} selected={selected}>
       <C.Icon>{icon}</C.Icon>
-
       <C.Info>
         <C.Title>{title}</C.Title>
         <C.Description>{description}</C.Description>

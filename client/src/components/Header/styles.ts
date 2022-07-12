@@ -22,5 +22,14 @@ export const Container = styled.div`
     font-size: 15px;
     padding: 10px;
     border-radius: 10%;
+    cursor: pointer;
+    background-color: #CCC;
+    opacity: 0.75;
+    letter-spacing: 1.8px;
+  }
+
+  button:hover {
+    background-color: #888;
+    opacity: 1;
   }
 `;

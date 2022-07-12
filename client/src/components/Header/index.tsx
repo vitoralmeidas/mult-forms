@@ -1,4 +1,5 @@
 import * as C from "./styles";
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
   return (
@@ -7,7 +8,7 @@ export const Header = () => {
       <h1>Cadastro de Desenvolvedor</h1>
       <p>Faça seu cadastro na lista e receba um emprego instantaneamente.</p>
       </div>
-      <button>Recrutador</button>
+      <Link to="/recruiter"><button>Recrutador</button></Link> 
     </C.Container>
   );
 };
