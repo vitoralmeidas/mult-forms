@@ -1,6 +1,5 @@
 import  * as C from "./styles";
 
-
 export const Recruiter = () => {
     return (
         <div>

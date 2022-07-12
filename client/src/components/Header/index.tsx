@@ -8,7 +8,7 @@ export const Header = () => {
       <h1>Cadastro de Desenvolvedor</h1>
       <p>Faça seu cadastro na lista e receba um emprego instantaneamente.</p>
       </div>
-      <Link to="/recruiter"><button>Recrutador</button></Link> 
+      <Link to="/login"><button>Recrutador</button></Link> 
     </C.Container>
   );
 };
