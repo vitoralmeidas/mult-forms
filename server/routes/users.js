@@ -10,6 +10,6 @@ const {
 
 router.route("/").get(getAllUsers);
 router.route("/").post(createNewUser);
-router.route("/coders").get(getCodersUsersStatic);
+router.route("/:id").get(getCodersUsersStatic);
 
 module.exports = router;
