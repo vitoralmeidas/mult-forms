@@ -5,9 +5,9 @@ const getAllUsers = async (req, res) => {
   res.status(200).json({ user, nbHits: user.length });
 };
 
-const getCodersUsers = async (req, res) => {
-  const user = await User.findById(req.params.id);
-  res.status(200).json({ user });
+const getCodersUsersStatic = async (req, res) => {
+  const user = await User.find({ level: 0 });
+  res.status(200).json({ user, nbHits: user.length });
 };
 
 const createNewUser = async (req, res) => {
@@ -16,4 +16,4 @@ const createNewUser = async (req, res) => {
   console.log("POST", req.body);
 };
 
-module.exports = { getAllUsers, createNewUser };
+module.exports = { getAllUsers, createNewUser, getCodersUsersStatic };
