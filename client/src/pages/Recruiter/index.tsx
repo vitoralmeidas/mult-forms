@@ -1,9 +1,14 @@
 import { useState } from "react";
 import  * as C from "./styles";
 
+
+//url: ${coder}
+
+
 export const Recruiter = () => {
     const [coder, setCoder]=useState('')
-    console.log(coder)
+    console.log(`http://localhost:5000/api/users/${coder}`)
+
     return (
         <div>
         <h1>Recruiter</h1>
