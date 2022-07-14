@@ -7,16 +7,15 @@ const getAllUsers = async (req, res) => {
 
 const getCodersUsersStatic = async (req, res) => {
   const params = Number(req.params.id);
-  console.log("params", params);
   const user = await User.find({ level: params });
-  res.status(200).json({ user, nbHits: user.length });
+  res.status(200).json({ user });
 };
 
 //url: http://localhost:5000/api/users/${level}
 
 const createNewUser = async (req, res) => {
   const user = await User.create(req.body);
-  res.status(201).json({ user });
+  res.status(201).json(user);
   console.log("POST", req.body);
 };
 

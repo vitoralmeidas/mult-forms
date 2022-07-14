@@ -25,8 +25,8 @@ export const FinalStep = () => {
 
   const handleNextStep = async () => {
     const url = "http://localhost:5000/api/v1/users"
-    const {name, email, github, level} = state;
-    await axios.post(url, {name, email, github, level});
+
+    await axios.post(url, state);
     dispatch({
       type: FormActions.cleanAll,
       payload: "",
