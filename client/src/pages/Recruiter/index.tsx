@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import axios from "axios";
+import { ChangeEvent, useEffect, useState } from "react";
 import  * as C from "./styles";
 
 
@@ -12,23 +13,28 @@ type User = {
 }
 
 type PropsType = {
+    map(arg0: (user: User) => JSX.Element): import("react").ReactNode;
     user: {name: string; email: string; github: string; level: number;}[];
 }
 
 export const Recruiter = () => {
     const [coder, setCoder] = useState('')
-    const [coderList, setCoderList] = useState<PropsType>({user: []})
-
-    const getCoder = async () => {
-        const response = await fetch(`http://localhost:5000/api/v1/users/${coder}`)
-        const data = await response.json()
-        setCoderList(data)
-        console.log(coderList)
-    }
+    const [coderList, setCoderList] = useState<PropsType>()
 
     const handleChange = (e :ChangeEvent<HTMLInputElement>) => {
         setCoder(e.target.value)
     }
+    const getCoder = async () => {
+        const response = await axios.get(`http://localhost:5000/api/v1/users/${coder}`)
+        const list = await response.data
+        setCoderList(list)
+        console.log(coderList)
+    }
+
+    useEffect(() => {
+        getCoder()
+    }
+    , [coder])
 
     const showUsers = (props: PropsType) => {
         const {user} = props
@@ -55,9 +61,10 @@ export const Recruiter = () => {
             <input onChange={handleChange} type='radio' name='programmer' value='1'/>
             <label htmlFor="programmer">Não</label>
             <input onChange={handleChange} type='radio' name='programmer' value='0'/>
-            <button onClick={getCoder}>Buscar</button>
+            <label htmlFor="programmer">Todos</label>
+            <input onChange={handleChange} type='radio' name='programmer' value=''/>
             <hr />
-            {showUsers(coderList)}
+            { coderList && showUsers(coderList) }
 
         </div>
     );
