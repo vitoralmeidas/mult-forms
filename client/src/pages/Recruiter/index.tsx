@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactChild, ReactFragment, ReactPortal, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import  * as C from "./styles";
 
 
@@ -15,10 +15,9 @@ type PropsType = {
     user: {name: string; email: string; github: string; level: number;}[];
 }
 
-
 export const Recruiter = () => {
     const [coder, setCoder] = useState('')
-    const [coderList, setCoderList] = useState<PropsType>([])
+    const [coderList, setCoderList] = useState<PropsType>({user: []})
 
     const getCoder = async () => {
         const response = await fetch(`http://localhost:5000/api/v1/users/${coder}`)
@@ -33,13 +32,15 @@ export const Recruiter = () => {
 
     const showUsers = (props: PropsType) => {
         const {user} = props
+
         return user.map((user: User) => {
             return (
                 <div>
-                    <p>{user.name}</p>
-                    <p>{user.email}</p>
-                    <p>{user.github}</p>
-                    <p>{user.level}</p>
+                    <p>Nome: {user.name}</p>
+                    <p>Email: {user.email}</p>
+                    <p>Github: {user.github}</p>
+                    <p>Experiência: {user.level === 1 ? 'Programador' : 'Iniciante'}</p>
+                    <hr/>
                 </div>
             )
         })
@@ -55,8 +56,7 @@ export const Recruiter = () => {
             <label htmlFor="programmer">Não</label>
             <input onChange={handleChange} type='radio' name='programmer' value='0'/>
             <button onClick={getCoder}>Buscar</button>
-            <br />
-            <br />
+            <hr />
             {showUsers(coderList)}
 
         </div>
