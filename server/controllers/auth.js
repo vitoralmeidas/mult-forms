@@ -1,7 +1,12 @@
 const register = async (req, res) => {
-  res.send("Register!");
+  res.json(req.body);
 };
 
 const login = async (req, res) => {
-  res.send("login");
+  res.json(req.body);
+};
+
+module.exports = {
+  register,
+  login,
 };

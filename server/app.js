@@ -1,11 +1,12 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
-const connectDB = require("./DB/connect");
-const usersRouter = require("./routes/users");
 require("dotenv").config();
-// async errors handler
 require("express-async-error");
+const cors = require("cors");
+const connectDB = require("./DB/connect");
+
+const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 
 app.get("/", (req, res) => {
   res.send("<h1>MULTI-FORM-API</h1>");
@@ -18,6 +19,7 @@ app.use(cors());
 
 //routes
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/auth", authRouter);
 
 const port = process.env.PORT || 5000;
 
