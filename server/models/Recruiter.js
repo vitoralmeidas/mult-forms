@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const RecruiterSchema = new mongoose.Schema({
   name: {
@@ -37,7 +38,13 @@ const RecruiterSchema = new mongoose.Schema({
 //validations
 
 //hashing password
+//pre -> middleware
+RecruiterSchema.pre("save", async function () {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
 
 //create a JWT
+// Instance Methods
 
 module.exports = mongoose.model("Recruiter", RecruiterSchema);
