@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+//require("dotenv").config();
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const RecruiterSchema = new mongoose.Schema({
   name: {
@@ -46,5 +48,14 @@ RecruiterSchema.pre("save", async function () {
 
 //create a JWT
 // Instance Methods
+RecruiterSchema.methods.createToken = function () {
+  return jwt.sign(
+    { userId: this._id, name: this.name },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_LIFETIME,
+    }
+  );
+};
 
 module.exports = mongoose.model("Recruiter", RecruiterSchema);
