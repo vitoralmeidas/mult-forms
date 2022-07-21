@@ -6,7 +6,7 @@ const auth = async (req, res, next) => {
 
   // it must start with 'Bearer'
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new Error("No Token Provided");
+    console.log("No Token Provided");
   }
 
   // get the token
@@ -22,7 +22,7 @@ const auth = async (req, res, next) => {
     req.user = { userId: payload.userId, name: payload.name };
     next();
   } catch (error) {
-    throw new Error("you don't have access");
+    console.log("you don't have access");
   }
 };
 
