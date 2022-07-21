@@ -7,6 +7,8 @@ const connectDB = require("./DB/connect");
 
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const recruiterRouter = require("./routes/recruiter");
+const auth = require("./middleware/authentication");
 
 app.get("/", (req, res) => {
   res.send("<h1>MULTI-FORM-API</h1>");
@@ -20,6 +22,7 @@ app.use(cors());
 //routes
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/recruiter", auth, recruiterRouter);
 
 const port = process.env.PORT || 5000;
 
