@@ -21,7 +21,9 @@ const auth = async (req, res, next) => {
     // then the next middleware will have access
     req.user = { userId: payload.userId, name: payload.name };
     next();
-  } catch (error) {}
+  } catch (error) {
+    throw new Error("you don't have access");
+  }
 };
 
 module.exports = auth;

@@ -57,5 +57,10 @@ RecruiterSchema.methods.createToken = function () {
     }
   );
 };
+//Compare the password
+RecruiterSchema.methods.comparePassword = async function (recruiterPassword) {
+  const isMatch = await bcrypt.compare(recruiterPassword, this.password);
+  return isMatch;
+};
 
 module.exports = mongoose.model("Recruiter", RecruiterSchema);
