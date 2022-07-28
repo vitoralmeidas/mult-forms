@@ -34,16 +34,15 @@ export const Register = () => {
             company: recruiterCompany
         }
 
-        const url = "http://localhost:5000/api/v1/recruiter/register"
+        const url = "http://localhost:5000/api/v1/auth/register"
 
-        const response = await axios.post(url, loginData)
+        await axios.post(url, loginData)
         
         setRecruiterEmail('')
         setRecruiterPassword('')
         setRecruiterName('')
         setRecruiterCompany('')
         
-        console.log(response)
     }
 
     return (
@@ -52,10 +51,10 @@ export const Register = () => {
                 <div className="content">
                     <h1>RECRUTADOR</h1>
                     <form>
-                        <input placeholder="Email" value={recruiterPassword} onChange={passwordHandler} required />
-                        <input placeholder="Password" value={recruiterEmail} onChange={emailHandler} required />
-                        <input placeholder="Nome" value={recruiterName} onChange={nameHandler} required />
-                        <input placeholder="Company" value={recruiterCompany} onChange={companyHandler} required />
+                        <input placeholder="Email" value={recruiterEmail} type='text' onChange={emailHandler} required autoComplete="new-password" />
+                        <input placeholder="Password" value={recruiterPassword} type='text'  onChange={passwordHandler} required autoComplete='new-password' />
+                        <input placeholder="Nome" value={recruiterName}  type='text' onChange={nameHandler} required autoComplete="new-password"/>
+                        <input placeholder="Company" value={recruiterCompany}  type='text' onChange={companyHandler} required autoComplete="new-password"/>
                         <Link to='/login'><button>Login</button></Link>
                     </form>
                     <button type="submit" onClick={submitHandler} >Register</button>
