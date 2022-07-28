@@ -6,6 +6,7 @@ import { FormStep2 } from "./pages/FormStep2";
 import { FormStep3 } from "./pages/FormStep3";
 import { Login } from "./pages/Login";
 import { Recruiter } from "./pages/Recruiter";
+import { Register } from "./pages/Register";
 
 export const Router = () => {
   return (
@@ -13,6 +14,7 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<FormStep1 />} />
         <Route path='/login' element={< Login/>} />
+        <Route path='/register' element={< Register/>} />
         <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/step2" element={<FormStep2 />} />
         <Route path="/step3" element={<FormStep3 />} />
