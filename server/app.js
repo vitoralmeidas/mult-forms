@@ -23,8 +23,8 @@ app.use(cors());
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
 //test
-app.use("/api/v1/recruiter", recruiterRouter);
-// app.use("/api/v1/recruiter", auth, recruiterRouter);
+// app.use("/api/v1/recruiter", recruiterRouter);
+app.use("/api/v1/recruiter", auth, recruiterRouter);
 
 const port = process.env.PORT || 5000;
 

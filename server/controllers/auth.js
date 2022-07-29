@@ -16,17 +16,17 @@ const login = async (req, res) => {
   }
 
   const recruiter = await Recruiter.findOne({ email });
-  console.log(recruiter);
 
   // check if there is a recruiter
   if (!recruiter) {
-    console.log("RECRUITER NOT FOUND");
+    return res.status(401).json({ message: "Usuário não encontrado" });
   }
 
   //compare the password
   const isPasswordCorrect = await recruiter.comparePassword(password);
   if (!isPasswordCorrect) {
     console.log("password incorrect");
+    return res.status(401).json({ message: "Senha incorreta" });
   }
 
   const token = recruiter.createToken();

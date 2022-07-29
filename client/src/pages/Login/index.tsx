@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import  * as C from "./styles";
 import axios from "axios";
 
@@ -7,6 +7,8 @@ import axios from "axios";
 export const Login = () => {
     const [recruiterPassword, setRecruiterPassword] = useState('')
     const [recruiterEmail, setRecruiterEmail] = useState('')
+
+    const navigate = useNavigate();
 
     const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRecruiterPassword(e.target.value)
@@ -16,13 +18,23 @@ export const Login = () => {
         setRecruiterEmail(e.target.value)
     }
 
+    console.log(recruiterEmail)
+
     const submitHandler = async () => {
         const loginData = {
             email: recruiterEmail, password:recruiterPassword
         }
-        const url = "http://localhost:5000/api/v1/recruiter/login"
+        const url = "http://localhost:5000/api/v1/auth/login"
         const response = await axios.post(url, loginData)
-        console.log(response)
+        // check if response is 200
+        if(response.status === 200){
+            // save token to local storage
+            localStorage.setItem("token", response.data.token)
+            // redirect to recruiter dashboard
+
+
+            window.location.href = "/recruiter"
+        }
 
         setRecruiterEmail('')
         setRecruiterPassword('')
@@ -31,11 +43,11 @@ export const Login = () => {
     return (
         <C.Container>
             <div>
-                <div className="content">
+                <div className="content"> 
                     <h1>RECRUTADOR</h1>
                     <form>
-                        <input placeholder="Email" value={recruiterPassword} onChange={passwordHandler} required />
-                        <input placeholder="Password" value={recruiterEmail} onChange={emailHandler} required />
+                        <input placeholder="Email" value={recruiterEmail} onChange={emailHandler} required />
+                        <input placeholder="Password" value={recruiterPassword} onChange={passwordHandler} required />
                         <button onClick={submitHandler} >Login</button>
                     </form>
                     <Link to='/register'><button>Registrar</button></Link>
