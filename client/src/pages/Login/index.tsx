@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import  * as C from "./styles";
 import axios from "axios";
 
@@ -18,24 +18,26 @@ export const Login = () => {
         setRecruiterEmail(e.target.value)
     }
 
-    console.log(recruiterEmail)
 
     const submitHandler = async () => {
+        
+        // data
         const loginData = {
             email: recruiterEmail, password:recruiterPassword
         }
+
         const url = "http://localhost:5000/api/v1/auth/login"
-        const response = await axios.post(url, loginData)
+        const response = await axios.post(url, loginData, {})
+        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+
         // check if response is 200
         if(response.status === 200){
             // save token to local storage
             localStorage.setItem("token", response.data.token)
-            // redirect to recruiter dashboard
-
-
-            window.location.href = "/recruiter"
+            // navigate("/recruiter")
         }
-
+        
+        window.location.href = "/recruiter"
         setRecruiterEmail('')
         setRecruiterPassword('')
     }
