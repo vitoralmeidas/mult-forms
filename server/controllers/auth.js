@@ -16,6 +16,7 @@ const login = async (req, res) => {
   }
 
   const recruiter = await Recruiter.findOne({ email });
+  console.log(recruiter);
 
   // check if there is a recruiter
   if (!recruiter) {
@@ -26,11 +27,10 @@ const login = async (req, res) => {
   const isPasswordCorrect = await recruiter.comparePassword(password);
   if (!isPasswordCorrect) {
     console.log("password incorrect");
-    return res.status(401).json({ message: "Senha incorreta" });
+    // return res.status(401).json({ message: "Senha incorreta" });
   }
-
   const token = recruiter.createToken();
-  res.status(200).json({ recruiter: { name: recruiter.name }, token });
+  res.status(201).json({ recruiter: { name: recruiter.name }, token });
 };
 
 module.exports = {

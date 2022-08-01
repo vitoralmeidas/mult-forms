@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 // login page styles
 export const Container = styled.div`
+    z-index: 1;
 
     background-color: #02044a;
     height: 100vh;
@@ -43,7 +44,7 @@ export const Container = styled.div`
         font-size: 16px;
     }
 
-    button {
+    button, .btn {
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
@@ -56,3 +57,27 @@ export const Container = styled.div`
         letter-spacing: 1.4px;
     }
 `;
+
+export const ModalLoadding = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 30%;
+    opacity: 0.8;
+    height: 50vh;
+    border-radius: 10px;
+    z-index: 9999;
+    .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+    }
+`;
+

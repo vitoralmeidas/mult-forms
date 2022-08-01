@@ -36,8 +36,8 @@ export const Register = () => {
 
         const url = "http://localhost:5000/api/v1/auth/register"
 
-        await axios.post(url, loginData)
-        
+         await axios.post(url, loginData);
+        // send token to header for authentication
         setRecruiterEmail('')
         setRecruiterPassword('')
         setRecruiterName('')

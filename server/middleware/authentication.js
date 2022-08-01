@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const auth = async (req, res, next) => {
   // check header
+  //////////////////////////// WE'RE LOSTING THE AUTHENTICATION WHEN WE REFRESH THE PAGE /////////////////////////////////////////
   const authHeader = req.headers.authorization;
 
   // it must start with 'Bearer'
